@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<TcEventSources Version="2">
+	<Source>
+		<GUID>{3097150D-49A0-4D1D-ABEF-8DD509A04356}</GUID>
+		<Name LcId="1033">NewEventClass_DisplayText</Name>
+		<Event>
+			<Id>#x010001</Id>
+			<Message LcId="1033">{0,x} #{1}  The motor cooling oil pressure is not OK</Message>
+		</Event>
+		<Event>
+			<Id>#x010002</Id>
+			<Message LcId="1033">{0,x} #{1}  Alarm2</Message>
+		</Event>
+	</Source>
+</TcEventSources>

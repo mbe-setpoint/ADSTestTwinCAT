@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="makeAlarm" Id="{68f2bc5a-2e92-4bd9-82e4-3d92820abdb6}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK makeAlarm
+VAR
+    alarm : REFERENCE TO p6com.AlarmDigital;
+    onTime : TIME;
+    offTime : TIME;
+
+    onTimer : TON; 
+    offTimer: TON;
+    state : DINT;
+ 
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+onTimer(IN:= state=0, PT:= onTime);
+offTimer(IN:= state=10, PT:= offTime);
+
+CASE state OF
+    0: 
+        IF onTimer.Q THEN
+            state := 10;
+		END_IF
+        
+    10:
+        IF offTimer.Q THEN
+            state := 0;
+		END_IF
+END_CASE
+
+alarm(ID:=2, IDName:='Alarm 1', Value := state = 10, TimeSpan := T#1MS);
+
+
+
+
+
+
+
+]]></ST>
+    </Implementation>
+    <Method Name="FB_init" Id="{3a7c1f56-e97c-40ed-bc1f-bc5f0aba9381}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
+    alarm : REFERENCE TO p6com.AlarmDigital;
+    onTime : TIME;
+    offTime : TIME;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^.alarm REF= alarm;
+THIS^.onTime := onTime;
+THIS^.offTime := offTime;
+]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="makeAlarm">
+      <LineId Id="13" Count="1" />
+      <LineId Id="38" Count="1" />
+      <LineId Id="16" Count="3" />
+      <LineId Id="29" Count="1" />
+      <LineId Id="33" Count="4" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="21" Count="2" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="makeAlarm.FB_init">
+      <LineId Id="7" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="12" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

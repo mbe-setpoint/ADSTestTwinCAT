@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="Alarms" Id="{174fa246-f000-48df-af03-c1742ed51508}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	
+    p6alarm1		: p6com.AlarmDigital(TC_Events.Alarms.Alarm1);
+	p6alarm2		: p6com.AlarmDigital(TC_Events.Alarms.Alarm2);
+    
+    alarm1 : makeAlarm(alarm:=p6alarm1, onTime:=T#5.5S, offTime:=T#10S);
+    alarm2 : makeAlarm(alarm:=p6alarm2, onTime:=T#22.5S, offTime:=T#30S);
+    
+END_VAR
+
+
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

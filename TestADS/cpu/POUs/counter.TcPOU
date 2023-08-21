@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="counter" Id="{4794190c-2183-498f-9e08-a352c9417c87}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK counter
+VAR
+    counter : DINT; 
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[counter := counter + 1;
+
+]]></ST>
+    </Implementation>
+    <Method Name="FB_init" Id="{6136ff50-caf9-4e9d-bf15-6f8696783c81}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
+    start : DINT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[counter := start; ]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Value" Id="{fe35c301-dd46-43cd-90b4-572e272cf8ae}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+{attribute 'TcRpcEnable'}
+PROPERTY Value : DINT]]></Declaration>
+      <Get Name="Get" Id="{edc70f8b-9e7e-4de5-8974-10b8a534f7fd}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Value := THIS^.counter;
+
+
+
+]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{61f3337d-7662-4a91-ab34-1f98c1964bda}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[THIS^.counter := Value;
+]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <LineIds Name="counter">
+      <LineId Id="9" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="11" Count="0" />
+    </LineIds>
+    <LineIds Name="counter.FB_init">
+      <LineId Id="7" Count="0" />
+    </LineIds>
+    <LineIds Name="counter.Value.Get">
+      <LineId Id="2" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="counter.Value.Set">
+      <LineId Id="2" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

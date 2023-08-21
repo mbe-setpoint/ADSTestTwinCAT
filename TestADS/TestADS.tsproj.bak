@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.47">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{3097150D-49A0-4D1D-ABEF-8DD509A04356}" PersistentType="true">alarms</Name>
+			<DisplayName TxtId=""><![CDATA[NewEventClass_DisplayText]]></DisplayName>
+			<EventId>
+				<Name Id="#x010001">Alarm1</Name>
+				<DisplayName TxtId=""><![CDATA[{0,x} #{1}  The motor cooling oil pressure is not OK]]></DisplayName>
+				<Severity>Critical</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="#x010002">Alarm2</Name>
+				<DisplayName TxtId=""><![CDATA[{0,x} #{1}  Alarm2]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<Hides>
+				<Hide GUID="{73AFED58-71A1-47BF-BBAD-93CBE2D1EB18}"/>
+				<Hide GUID="{8CFBA656-A565-43FA-8FFB-225BBDD97F07}"/>
+				<Hide GUID="{0F2B75F7-1AE0-4790-B5C9-646CDC7CE318}"/>
+			</Hides>
+		</DataType>
+	</DataTypes>
+	<Project ProjectGUID="{757BF67F-C82E-4AFA-AB54-43E4EAE87FCB}" TargetNetId="10.0.0.68.1.1" Target64Bit="true" ShowHideConfigurations="#x3c7">
+		<System>
+			<Settings MaxCpus="2" NonWinCpus="1" RouterMemory="134217728">
+				<Cpu CpuId="1"/>
+			</Settings>
+			<Licenses>
+				<Target>
+					<ManualSelect>{E008E3C8-6BD9-491C-B673-DC45CC7AA4F1}</ManualSelect>
+				</Target>
+			</Licenses>
+			<Tasks>
+				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+					<Name>PlcTask</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Plc>
+			<Project GUID="{83B3F3DB-F541-433F-90DD-3D39453226BF}" Name="cpu" PrjFilePath="cpu\cpu.plcproj" TmcFilePath="cpu\cpu.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="cpu\cpu.tmc" TmcHash="{4B2DF440-336A-C03A-B17C-2712BC14FE8D}">
+					<Name>cpu Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Contexts>
+						<Context>
+							<Id>0</Id>
+							<Name>PlcTask</Name>
+							<ManualConfig>
+								<OTCID>#x02010030</OTCID>
+							</ManualConfig>
+							<Priority>20</Priority>
+							<CycleTime>10000000</CycleTime>
+						</Context>
+					</Contexts>
+					<TaskPouOids>
+						<TaskPouOid Prio="20" OTCID="#x08502001"/>
+					</TaskPouOids>
+				</Instance>
+			</Project>
+		</Plc>
+	</Project>
+</TcSmProject>

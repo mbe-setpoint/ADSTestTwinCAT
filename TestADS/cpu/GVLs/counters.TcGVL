@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="counters" Id="{eeba1932-e6f7-4660-80ae-8bff9c51d9bb}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+    counter01 : counter(23);
+    counter02 : counter(2);
+    counter03 : counter(233);
+    counter04 : counter(2);
+    counter05 : counter(27);
+    counter06 : counter(21);
+    counter07 : counter(55);
+    counter08 : counter(67);
+    counter09 : counter(10);
+    counter10 : counter(98);
+    counter11 : counter(666);
+    counter12 : counter(999);
+    counter13 : counter(1000);
+    counter14 : counter(333);
+    counter15 : counter(445);
+    counter16 : counter(4454089);
+    counter17 : counter(56464569);
+    counter18 : counter(098402423);
+    counter19 : counter(33355);
+    counter20 : counter(93783);
+
+    numbers : ARRAY[0..199] OF DINT;
+    
+END_VAR
+
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

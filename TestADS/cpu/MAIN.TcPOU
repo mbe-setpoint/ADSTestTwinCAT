@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{7eade5c7-8157-4f0a-9946-10fde348d75f}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+    value : DINT; 
+    timer : TON;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[timer(IN:= NOT timer.Q, PT:=T#80MS);
+
+//Alarms.alarm1();
+//Alarms.alarm2();
+
+
+counters.counter01();
+counters.counter02();
+counters.counter03();
+counters.counter04();
+counters.counter05();
+counters.counter06();
+counters.counter07();
+counters.counter08();
+counters.counter09();
+counters.counter10();
+counters.counter11();
+counters.counter12();
+counters.counter13();
+counters.counter14();
+counters.counter15();
+counters.counter16();
+counters.counter17();
+counters.counter18();
+counters.counter19();
+counters.counter20();
+
+
+value := counters.counter01.Value;
+value := counters.counter02.Value;
+value := counters.counter03.Value;
+value := counters.counter04.Value;
+value := counters.counter05.Value;
+value := counters.counter06.Value;
+value := counters.counter07.Value;
+value := counters.counter08.Value;
+value := counters.counter09.Value;
+value := counters.counter10.Value;
+value := counters.counter11.Value;
+value := counters.counter12.Value;
+value := counters.counter13.Value;
+value := counters.counter14.Value;
+value := counters.counter15.Value;
+value := counters.counter16.Value;
+value := counters.counter17.Value;
+value := counters.counter18.Value;
+value := counters.counter19.Value;
+value := counters.counter20.Value;
+]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="58" Count="0" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="15" Count="19" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="37" Count="19" />
+      <LineId Id="36" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
